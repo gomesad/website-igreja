@@ -1,7 +1,7 @@
 @use 'sass:map';
 
 $breakpoints: (
-  md: 768px
+  md: 768px // Ponto de quebra onde o menu hambúrguer aparece
 );
 
 header {
@@ -11,7 +11,10 @@ header {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra sutil
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo {
@@ -22,58 +25,158 @@ header {
   }
 }
 
+.hamburger-icon {
+  display: block;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #740102;
+  padding: 0.5rem;
+  line-height: 1;
+
+  @media (min-width: map.get($breakpoints, md)) {
+    display: none;
+  }
+}
+
 .navigation {
-  // Estilos para o menu em mobile (oculto inicialmente, visível ao toggle)
-  // display: none; // Inicialmente oculto em mobile, controlado por JS/TS para toggle
-  width: 100%; // Ocupa toda a largura em mobile
-  order: 1; // Aparece abaixo do logo/hamburguer em mobile
+  width: 100%;
+  order: 1;
+  display: none;
+  transition: all 0.3s ease-in-out;
+
 
   ul {
     list-style: none;
     padding: 0;
-    margin: 1rem 0 0 0; // Espaço acima em mobile
+    margin: 1rem 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem; // Espaçamento entre itens
+    gap: 0.8rem;
+  }
+
+  li {
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+
+
+       @media (min-width: map.get($breakpoints, md)) {
+           // >>> ESTILO DA ABORDAGEM MIN-WIDTH <<<
+           width: auto;
+           margin: 0;
+           padding: 0 0.5rem; // Padding horizontal no li em desktop
+           box-sizing: border-box;
+           min-width: 190px; // *** Aplicando min-width de 190px ***
+           display: flex; // li como flex container
+           justify-content: center; // Centraliza o link
+           align-items: center;
+       }
   }
 
   a {
      text-decoration: none;
      color: #740102;
-     padding: 0.5rem;
      display: block;
-     width: 100%; // Área de clique maior em mobile
+     width: 100%; // Link preenche o li
      text-align: center;
+     border-bottom: 1px solid #eee;
      &:hover {
        background-color: lighten(#f8f7f3, 5%);
      }
+
+     padding: 0.8rem 1rem; // Padding do link (mobile)
+     box-sizing: border-box;
+     line-height: 1.2;
+
+     &.active {
+        // O estilo .active em styles.scss não deve adicionar border/margin/outline que causem salto
+     }
+
+     &:focus {
+       outline: none;
+       background-color: lighten(#f8f7f3, 10%);
+     }
   }
 
+  &.menu-open { // Estilos quando o menu está aberto (mobile)
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #f8f7f3;
+    padding: 1rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 90;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+
+     ul {
+        align-items: stretch;
+        gap: 0;
+     }
+
+     li {
+        margin: 0;
+     }
+
+     a {
+         padding: 0.8rem 1rem;
+         border-bottom: 1px solid #eee;
+     }
+  }
+
+
   @media (min-width: map.get($breakpoints, md)) {
-    // Estilos para o menu em desktop
-    display: block !important; // Sempre visível em desktop
+    display: block !important;
     width: auto;
-    order: 0; // Volta para a ordem normal
+    order: 0;
 
     ul {
       margin: 0;
       flex-direction: row;
-      gap: 1rem; // Espaçamento horizontal em desktop
+      gap: 0.5rem; // Gap entre os li's
+      align-items: center;
+    }
+
+     li {
+        margin: 0;
+        padding: 0 0.5rem; // Padding horizontal no li em desktop
+        min-width: 190px; // *** min-width definido para 190px ***
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-left: 1px solid #740102;
+     }
+
+     li:first-child {
+      border-left: none;
     }
 
      a {
-       padding: 0;
-       width: auto;
-       text-align: left;
+       width: 100%; // Link preenche o li
+       text-align: center;
+       border-bottom: none;
+       padding: 0; // Padding do link em desktop removido
+
         &:hover {
-          text-decoration: underline; // Underline no hover em desktop
+          text-decoration: underline;
           background-color: transparent;
         }
+        &.active {
+            // Manter os estilos do .active
+        }
+     }
+     &.menu-open { // Estilos para desktop mesmo com a classe
+        position: static;
+        background-color: transparent;
+        padding: 0;
+        box-shadow: none;
+        height: auto;
+        overflow-y: visible;
      }
   }
 }
-
-// Estilos para o ícone do menu hambúrguer seriam adicionados aqui, visível apenas em mobile
-// Ex: .hamburger-icon { display: block; ... }
-// @media (min-width: map.get($breakpoints, md)) { .hamburger-icon { display: none; } }

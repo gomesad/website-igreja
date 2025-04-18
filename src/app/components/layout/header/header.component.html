@@ -1,14 +1,18 @@
 <header>
-    <img src="logo_peq.png" alt="Logo da Igreja" class="logo">
-    <nav class="navigation">
-      <ul>
-        <li><a routerLink="/" routerLinkActive="active">Início</a></li>
-        <li><a routerLink="/sobre-nos" routerLinkActive="active">Sobre Nós</a></li>
-        <li><a routerLink="/palavra-do-pastor" routerLinkActive="active">Palavra do Pastor</a></li>
-        <li><a routerLink="/nossas-crencas" routerLinkActive="active">Nossas Crenças</a></li>
-        <li><a routerLink="/localizacao" routerLinkActive="active">Localização e Contato</a></li>
-        <li><a routerLink="/horarios" routerLinkActive="active">Horários</a></li>
-        <li><a routerLink="/lideranca" routerLinkActive="active">Liderança</a></li>
+  <img src="logo_peq.png" alt="Logo da Igreja" class="logo">
+
+  <button class="hamburger-icon" (click)="toggleMenu()" aria-label="Toggle navigation menu">
+    &#9776; </button>
+
+  <nav class="navigation" [class.menu-open]="isMenuOpen">
+    <ul>
+      <li><a routerLink="/" routerLinkActive="active" (click)="toggleMenu()">Início</a></li>
+      <li><a routerLink="/sobre-nos" routerLinkActive="active" (click)="toggleMenu()">Sobre Nós</a></li>
+      <li><a routerLink="/palavra-do-pastor" routerLinkActive="active" (click)="toggleMenu()">Palavra do Pastor</a></li>
+      <li><a routerLink="/nossas-crencas" routerLinkActive="active" (click)="toggleMenu()">Nossas Crenças</a></li>
+      <li><a routerLink="/localizacao" routerLinkActive="active" (click)="toggleMenu()">Localização e Contato</a></li>
+      <li><a routerLink="/horarios" routerLinkActive="active" (click)="toggleMenu()">Horários</a></li>
+      <li><a routerLink="/lideranca" routerLinkActive="active" (click)="toggleMenu()">Liderança</a></li>
       </ul>
-    </nav>
-    </header>
+  </nav>
+</header>

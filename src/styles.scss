@@ -1,8 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  overflow-y: scroll; /* Força a barra de rolagem vertical a estar sempre presente */
+  box-sizing: border-box; /* Garante que padding/border não aumentem o tamanho total */
+}
+
+*, *::before, *::after {
+  box-sizing: inherit; /* Herda o box-sizing do html */
+}
+
 html, body {
   height: 100%; // Ou min-height: 100%;
   margin: 0;
   padding: 0; // Apenas para garantir
+  // >>> REMOVIDO O OVERFLOW-Y: SCROLL AQUI E MOVIDO PARA O HTML <<<
+  // >>> Adicionando padding-right para compensar a barra de rolagem, se necessário <<<
+  // Em alguns casos, apenas forçar overflow-y: scroll no html já resolve.
+  // Se o salto persistir, podemos adicionar padding-right aqui:
+  // padding-right: 17px; /* Exemplo: 17px é uma largura comum de scrollbar */
 }
 
 body {
