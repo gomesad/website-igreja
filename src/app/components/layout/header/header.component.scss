@@ -1,0 +1,79 @@
+@use 'sass:map';
+
+$breakpoints: (
+  md: 768px
+);
+
+header {
+  background-color: #f8f7f3;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra sutil
+}
+
+.logo {
+  max-height: 40px;
+
+  @media (min-width: map.get($breakpoints, md)) {
+    max-height: 50px;
+  }
+}
+
+.navigation {
+  // Estilos para o menu em mobile (oculto inicialmente, visível ao toggle)
+  // display: none; // Inicialmente oculto em mobile, controlado por JS/TS para toggle
+  width: 100%; // Ocupa toda a largura em mobile
+  order: 1; // Aparece abaixo do logo/hamburguer em mobile
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0; // Espaço acima em mobile
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem; // Espaçamento entre itens
+  }
+
+  a {
+     text-decoration: none;
+     color: #740102;
+     padding: 0.5rem;
+     display: block;
+     width: 100%; // Área de clique maior em mobile
+     text-align: center;
+     &:hover {
+       background-color: lighten(#f8f7f3, 5%);
+     }
+  }
+
+  @media (min-width: map.get($breakpoints, md)) {
+    // Estilos para o menu em desktop
+    display: block !important; // Sempre visível em desktop
+    width: auto;
+    order: 0; // Volta para a ordem normal
+
+    ul {
+      margin: 0;
+      flex-direction: row;
+      gap: 1rem; // Espaçamento horizontal em desktop
+    }
+
+     a {
+       padding: 0;
+       width: auto;
+       text-align: left;
+        &:hover {
+          text-decoration: underline; // Underline no hover em desktop
+          background-color: transparent;
+        }
+     }
+  }
+}
+
+// Estilos para o ícone do menu hambúrguer seriam adicionados aqui, visível apenas em mobile
+// Ex: .hamburger-icon { display: block; ... }
+// @media (min-width: map.get($breakpoints, md)) { .hamburger-icon { display: none; } }

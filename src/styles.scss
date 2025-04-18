@@ -1,12 +1,24 @@
-/* Estilos globais podem ser adicionados aqui */
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%; // Ou min-height: 100%;
+  margin: 0;
+  padding: 0; // Apenas para garantir
+}
+
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f7f3;
-    color: #333;
-  }
-  
-  .active {
-    font-weight: bold;
-  }
+  font-family: sans-serif;
+  background-color: #f8f7f3; // Cor de fundo clara da paleta
+  color: #333; // Cor de texto padrão
+}
+
+.active {
+  font-weight: bold;
+  color: #fe6704 !important; // Destaque com a cor de acento
+  // Pode adicionar underline ou outro estilo de destaque aqui
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #740102; // Títulos com a cor primária de destaque
+}
+
+/* Outros estilos globais básicos podem ser adicionados conforme necessário */

@@ -1,0 +1,31 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  app-header {
+    width: 100%;
+    flex-shrink: 0;
+  }
+  
+  app-widgets {
+    width: 100%;
+    flex-shrink: 0;
+  }
+  
+  .main-content-area { // Usando a classe definida no HTML
+    flex-grow: 1;
+    padding: 10px; // Padding menor em mobile
+    box-sizing: border-box;
+  
+    @media (min-width: 768px) {
+      padding: 20px; // Padding maior em desktop
+    }
+  }
+  
+  
+  app-footer {
+    width: 100%;
+    flex-shrink: 0;
+  }

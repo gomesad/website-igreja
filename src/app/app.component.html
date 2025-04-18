@@ -1,8 +1,6 @@
-<div style="display: flex; flex-direction: column; min-height: 100vh;">
-  <app-header></app-header>
-  <app-widgets style="flex-shrink: 0;"></app-widgets>
-  <div style="flex-grow: 1; padding: 20px;">
-    <router-outlet></router-outlet>
-  </div>
-  <app-footer style="flex-shrink: 0;"></app-footer>
+<app-header></app-header>
+<app-widgets></app-widgets>
+<div class="main-content-area">
+  <router-outlet></router-outlet>
 </div>
+<app-footer></app-footer>

@@ -1,0 +1,84 @@
+@use 'sass:map';
+
+$breakpoints: (
+  md: 768px
+);
+
+footer {
+  background-color: #740102;
+  color: #f8f7f3;
+  padding: 1.5rem 1rem; // Padding vertical e horizontal
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; // Espaçamento entre seções
+  align-items: center; // Centraliza em mobile
+}
+
+.footer-section {
+  flex: 1;
+  padding: 0 1rem;
+  width: 100%; // Ocupa toda a largura em mobile
+  text-align: center; // Centraliza texto em mobile
+
+  h4 {
+    color: #fe6704; // Títulos das seções em laranja
+    margin-bottom: 0.8rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    color: #f8f7f3;
+    text-decoration: none;
+    display: block; // Links ocupam a linha inteira
+    margin-bottom: 0.4rem;
+    &:hover {
+      color: #fe6704;
+    }
+  }
+
+  p {
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+  }
+
+  @media (min-width: map.get($breakpoints, md)) {
+     width: auto; // Largura automática em desktop
+     text-align: left; // Alinha texto à esquerda em desktop
+     p {
+        margin-bottom: 0.2rem;
+     }
+  }
+}
+
+.copyright {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem; // Espaço acima do copyright
+    padding-top: 1rem; // Padding no topo
+    border-top: 1px solid rgba(#f8f7f3, 0.2); // Linha separadora
+    font-size: 0.9rem;
+    order: 2; // Garante que apareça por último
+}
+
+@media (min-width: map.get($breakpoints, md)) {
+    footer {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap; // Permite quebra para o copyright
+    }
+
+    .copyright {
+        width: auto;
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+        order: 0; // Volta para a ordem normal em desktop (pode ajustar dependendo da posição desejada)
+        flex-basis: 100%; // Ocupa toda a largura disponível
+    }
+}

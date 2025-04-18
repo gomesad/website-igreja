@@ -1,0 +1,76 @@
+@use 'sass:map';
+
+$breakpoints: (
+  md: 768px
+);
+
+.widgets-container {
+  padding: 1rem;
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+
+  @media (min-width: map.get($breakpoints, md)) {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+}
+
+.widget-item {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #fff;
+  width: 90%;
+
+  @media (min-width: map.get($breakpoints, md)) {
+    width: 45%;
+    max-width: 400px;
+  }
+}
+
+.radio-widget {
+  // Estilos específicos para o widget da rádio
+}
+
+.devotional-widget {
+  // Estilos específicos para o widget do devocional
+   a {
+       color: #740102;
+       text-decoration: none;
+       font-weight: bold;
+       &:hover {
+           text-decoration: underline;
+       }
+   }
+}
+
+.radio-player-container {
+   position: relative;
+   overflow: hidden;
+   width: 100%;
+   /* Ajustar o padding-top dependendo da proporção real do iframe player */
+   /* Se o height for fixo em 70px, podemos usar um height fixo também ou ajustar */
+   height: 120px; /* Altura definida no link do player */
+   margin-top: 0.8rem; // Espaço acima do player
+
+   iframe {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     border: none; /* Remover borda padrão do iframe */
+   }
+}
+
+@media (min-width: map.get($breakpoints, md)) {
+    .radio-player-container {
+        height: 120px; /* Mantém a altura em desktop */
+        /* Se a largura 1600px no link for relevante para a proporção, ajustar width */
+        /* ou deixar o iframe ser 100% da largura do widget-item */
+    }
+}

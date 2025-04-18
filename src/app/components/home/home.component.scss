@@ -1,0 +1,8 @@
+.home-content {
+    padding: 15px;
+    text-align: center;
+  
+    @media (min-width: 768px) {
+      padding: 30px;
+    }
+  }

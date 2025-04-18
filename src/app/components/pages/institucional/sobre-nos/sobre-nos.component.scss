@@ -1,0 +1,16 @@
+.page-content {
+    padding: 15px; // Padding padrão para mobile
+  
+    @media (min-width: 768px) {
+      padding: 30px; // Padding maior para desktop
+    }
+  
+    h2 {
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+}

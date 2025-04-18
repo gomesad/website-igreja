@@ -4,13 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-widgets',
   standalone: true,
   imports: [],
-  template: `
-    <div style="padding: 1rem; background-color: #eee;">
-      <! -- Widgets serão inseridos aqui -->
-      <h3>Widgets</h3>
-      <p>Área para Rádio Online, Devocional e outros widgets.</p>
-    </div>
-  `,
-  styles: []
+  templateUrl: './widgets.component.html',
+  styleUrls: ['./widgets.component.scss']
 })
 export class WidgetsComponent { }
